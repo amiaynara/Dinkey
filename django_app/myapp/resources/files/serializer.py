@@ -6,7 +6,7 @@ from rest_framework import serializers
 from myapp.models import File
 
 
-class FileSerializer(serializers.Serializer):
+class FileSerializer(serializers.ModelSerializer):
     """Analyses serializer class"""
 
     class Meta:

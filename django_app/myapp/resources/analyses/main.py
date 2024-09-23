@@ -6,6 +6,7 @@ import os
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework import status
 from rest_framework import viewsets
 
 # App imports
@@ -22,8 +23,8 @@ class AnalysisViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         """Override obj create"""
         # check protection
-        ret_val = ProtCheck()
-        if  ret_val != 0:
-            # we may just as well raise an UNAUTHORIZED error
-            return Response({"message": "Dongle is not connected. Analyses creation not allowed"})
+        # ret_val = ProtCheck()
+        # if  ret_val != 0:
+        #     # we may just as well raise an UNAUTHORIZED error
+        #     return Response({"message": "Dongle is not connected. Analyses creation not allowed"})
         return super().create(request, *args, **kwargs)

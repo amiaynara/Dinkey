@@ -6,7 +6,7 @@ from rest_framework import serializers
 from myapp.models import Sample
 
 
-class SampleSerializer(serializers.Serializer):
+class SampleSerializer(serializers.ModelSerializer):
     """Sample serializer class"""
 
     class Meta:

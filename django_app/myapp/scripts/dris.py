@@ -96,7 +96,7 @@ def make_signed32bit(value):
 # look for the Dinkey Pro runtime module in the same directory as this python source file
 # !!!! if you want to load it from a different directory then you need to modify this line
 this_dir = os.path.dirname(__file__)
-
+library = None
 try:
 	if sys.platform == 'win32':
 		if sys.maxsize > 2**32:

@@ -8,7 +8,7 @@ from myapp.resources.samples.serializer import SampleSerializer
 from myapp.resources.files.serializer import FileSerializer
 
 
-class AnalysisSerializer(serializers.Serializer):
+class AnalysisSerializer(serializers.ModelSerializer):
     """Analyses serializer class"""
 
     samples = SampleSerializer(many=True, read_only=True)
