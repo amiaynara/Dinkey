@@ -25,6 +25,6 @@ class SampleViewSet(viewsets.ModelViewSet):
         ret_val = ProtCheck()
         if  ret_val != 0:
             return Response({"message": "Dongle is not connected. Sample creation not allowed"})
-        return super().create(request, *args, *kwargs)
+        return super().create(request, *args, **kwargs)
 
     
