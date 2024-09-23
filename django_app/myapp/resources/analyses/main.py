@@ -23,8 +23,8 @@ class AnalysisViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         """Override obj create"""
         # check protection
-        # ret_val = ProtCheck()
-        # if  ret_val != 0:
-        #     # we may just as well raise an UNAUTHORIZED error
-        #     return Response({"message": "Dongle is not connected. Analyses creation not allowed"})
+        ret_val = ProtCheck()
+        if  ret_val != 0:
+            # we may just as well raise an UNAUTHORIZED error
+            return Response({"message": "Dongle is not connected. Analyses creation not allowed"})
         return super().create(request, *args, **kwargs)
