@@ -4,7 +4,7 @@ class Analysis(models.Model):
     name = models.CharField(max_length=255, help_text="Name of analysis")
 
 class Sample(models.Model):
-    name = models.CharField(max_length=255, help_text="Name of analysis")
+    name = models.CharField(max_length=255, help_text="Name of sample")
     analysis = models.ForeignKey(Analysis, null=True, on_delete=models.CASCADE, related_name='samples')
 
 class File(models.Model):

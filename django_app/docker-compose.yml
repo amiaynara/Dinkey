@@ -7,6 +7,11 @@ services:
     volumes:
       - .:/app
       - /tmp:/tmp
+      - type: bind
+        source: /dev/bus/usb
+        target: /dev/bus/usb
+        bind:
+          propagation: rshared
     ports:
       - "8000:8000"
     # depends_on:
