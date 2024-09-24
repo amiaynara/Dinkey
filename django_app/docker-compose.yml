@@ -14,9 +14,8 @@ services:
           propagation: rshared
     ports:
       - "8000:8000"
-    cap_add:
-      - SYS_ADMIN
-      - SYS_RAWIO
+    privileged: true
+    # https://stackoverflow.com/questions/24225647/docker-a-way-to-give-access-to-a-host-usb-or-serial-device/66427245#66427245
     # depends_on:
     #   - db
     # environment:
