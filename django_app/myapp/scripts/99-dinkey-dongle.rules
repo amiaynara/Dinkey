@@ -1,0 +1,4 @@
+# /etc/udev/rules.d/99-dinkey-dongle.rules
+# ATTR to be filled from the output of `lsusb` | grep 'Feitian Technologies, Inc. HID Dongle'
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="096e", ATTR{idProduct}=="0007", RUN+="/usr/local/bin/docker_dinkey.sh 'added' '%E{DEVNAME}' '%M' '%m'"
+ACTION=="remove", SUBSYSTEM=="usb", ATTR{idVendor}=="096e", ATTR{idProduct}=="0007", RUN+="/usr/local/bin/docker_dinkey.sh 'removed' '%E{DEVNAME}' '%M' '%m'"
