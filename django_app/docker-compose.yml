@@ -3,7 +3,6 @@ ersion: '3.8'
 services:
   django-app:
     build: .
-    # command: python manage.py runserver 0.0.0.0:8000
     container_name: protected-app
     volumes:
       - .:/app
@@ -16,6 +15,16 @@ services:
       - SYS_RAWIO
     ports:
       - "8000:8000"
+    # volumes:
+    #   - .:/app
+    #   - /tmp:/tmp
+    #   - type: bind
+    #     source: /dev/bus/usb
+    #     target: /dev/bus/usb
+    #     bind:
+    #       propagation: rshared
+    # security_opt:
+    #   - no-new-privileges  # Prevents the container from gaining additional privileges
     # privileged: true
     # https://stackoverflow.com/questions/24225647/docker-a-way-to-give-access-to-a-host-usb-or-serial-device/66427245#66427245
     # depends_on:
