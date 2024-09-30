@@ -20,7 +20,7 @@ services:
 
   django-app-clone:
     build: .
-    container_name: protected-app
+    container_name: protected-app-2
     volumes:
       - .:/app
       - /tmp:/tmp
