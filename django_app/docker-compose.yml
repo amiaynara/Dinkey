@@ -15,6 +15,23 @@ services:
       - SYS_RAWIO
     ports:
       - "8000:8000"
+
+
+
+  django-app-clone:
+    build: .
+    container_name: protected-app
+    volumes:
+      - .:/app
+      - /tmp:/tmp
+      - /dev/bus/usb:/dev/bus/usb
+    device_cgroup_rules:
+      - 'c 189:* rmw'
+    cap_add:
+      - SYS_ADMIN
+      - SYS_RAWIO
+    ports:
+      - "8001:8000"
     # volumes:
     #   - .:/app
     #   - /tmp:/tmp
