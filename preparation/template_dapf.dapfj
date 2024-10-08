@@ -1,0 +1,88 @@
+{
+   "Notes": "Protects the hello program as part of the Quick Tour for Linux",
+   "Models": ["Pro Lite"],
+   "ProductCode": "PINDA-0",
+   "NetUserType": "per product",
+   "ProductMaxNetUsers": 2,
+
+   "Advanced": {
+      "DongleNumbers": "all",
+      "DongleNumberRangeMin": null,
+      "DongleNumberRangeMax": null,
+      "DataEncKeyProductCode": null,
+      "LockDongleToComputer": true,
+      "AllowUSBOverNetwork": true,
+      "AllowSoftwareKeys": true
+   },
+
+   "Licences": [
+      {
+         "Name": "hello",
+         "Executions": 5,
+         "ExecutionWarning": null,
+         "ExpiryDate": "no limit",
+         "MaxDays": "no limit",
+         "ExpiryWarning": null,
+         "Features": 0,
+         "LicenceMaxNetUsers": null
+      }
+   ],
+
+   "Files": [
+      {
+         "InputName": "/home/amiay/Downloads/dinkey-pro-linux-x86-amd64-13365-v800/dinkey-pro-800/QuickTour/hello64",
+         "OutputName": "/home/amiay/Downloads/dinkey-pro-linux-x86-amd64-13365-v800/dinkey-pro-800/QuickTour/hello64_protected",
+         "CallingProgram": null,
+         "Licence": "hello",
+         "Method": "Shell",
+         "ShellOptions": {
+            "DecrementExecution": true,
+            "StartNetworkUser": true,
+            "BackgroundCheck": null,
+            "DataFileEncryption": false,
+            "DataFileTypes": null,
+            "DataFileExceptions": null,
+            "ExtraAntiDebug": true,
+            "ExtraAntiPiracy": 0
+         }
+      }
+   ],
+
+   "DataArea": {
+      "ZeroDataSize": null,
+      "DataFile": ""
+   },
+
+   "ShellMessages": {
+      "Success": "",
+      "DongleNotFound": "Error! A valid dongle for MyProduct has not been detected.",
+      "ExpiryError": "MyProduct has expired!",
+      "ExecsLimit": "MyProduct has used up all of its allowed executions.",
+      "ExpiryWarning": "Warning! MyProduct will expire in %1 days.",
+      "ExecsWarning": "Warning! You will only be able to run MyProduct %1 more times.",
+      "NetUserLimit": "The maximum number of permitted network users has been exceeded.",
+      "OtherError": "The error %1/%2 has occurred checking the dongle in MyProduct.",
+      "Background": "This program will terminate in 30 seconds.\r\nPlease save your work or attach a valid dongle.",
+      "NetNoServer": "Error! Cannot detect DinkeyServer on the network."
+   },
+
+   "Algorithms": [
+   ],
+
+   "ExtraSecurity": {
+      "DRISEncryptionKeys": null,
+      "DataEncryptionKeys": null,
+      "RWAlgorithm": null,
+      "SecureUpdatesOnly": false
+   },
+
+   "Actions": {
+      "ProgramDongle": true,
+      "LockSoftware": true
+   },
+
+   "DataFileEncryptionTool": {
+      "Files": [
+      ]
+   }
+}

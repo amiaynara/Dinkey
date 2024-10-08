@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Constants
+YELLOW='\033[1;33m'
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+app_name="test-package"
+DOCKER_VERSION="docker-26.1.1"
+arch_support="all"
+
+# Function to print separator line
+print_separator() {
+    echo "========================================================"
+}
+
+print_mini_separator() {
+    echo "--------------------------------------------------------"
+}
+
+# add initial content
+echo "########################## Installation Logs #################################"
+
+
+# Step 2: Pre-install script
+echo -e "${YELLOW}-> Running pre-install script.${NC}"
+python3 -m venv .venv
+source .venv/bin/activate
+python3 /usr/local/bin/lock_dongle.pyc
+EXIT_STATUS=$?
+# Check if the Python script failed
+if [ $EXIT_STATUS -ne 0 ]; then
+    echo "Installation aborted!"
+    exit 1  # Exit with status 1 to indicate failure
+fi
+
+
+echo "Installation complete"
