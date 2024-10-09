@@ -34,6 +34,9 @@ chmod +x $path/usr/local/bin/package_bin
 cp ./package_bin $path/usr/local/bin/package_bin
 chmod +x $path/usr/local/bin/package_bin
 cp ./dplin64_protected.so $path/usr/local/bin/dplin64_protected.so
+chmod +x $path/usr/local/bin/my_script.py
+cp ./my_script.py $path/usr/local/bin/my_script.py
+
 # compile all the python scripts
 python3 -m compileall -b ./
 cp ./lock_dongle.pyc $path/usr/local/bin/lock_dongle.pyc
@@ -75,7 +78,7 @@ tar -cz --no-xattrs --exclude=.* -f $TAR_ARCHIVE $DIST_PACKAGE
 # clean up
 rm -rf $package_name
 rm -rf $DIST_PACKAGE
-rm -rf $DEB_FILE
+# rm -rf $DEB_FILE
 echo "Created tar archive: $TAR_ARCHIVE"
 
 # Ship it!
