@@ -1,0 +1,59 @@
+#!/bin/bash
+#
+# Install script for Dinkey Dongle
+#
+
+#check whether the current user is root
+if test $(id -ur) != 0; then
+	echo
+	echo "Warning: You must run this script as root user!"
+	echo
+	exit -1
+fi
+
+# modify udev settings so the dongle (flash disk, internal hub) is recognised
+if [ -d /etc/udev/rules.d/ ]; then
+    #find version of udev
+    declare udev_cmd=`which udevadm`
+    declare -i udev_version=`$udev_cmd --version | cut -f1 -d' ' `
+    #create ft.rules file
+    echo "#dongle device"  > /etc/udev/rules.d/ft.rules
+    if [ $udev_version -lt 98 ]; then
+        echo "BUS==\"usb\", SYSFS{idVendor}==\"096e\", MODE=\"0666\", RUN+=\"/usr/sbin/lsusb -v\", RUN+=\"/usr/bin/lsusb -v\"" >> /etc/udev/rules.d/ft.rules
+        echo "BUS==\"usb\", SYSFS{idVendor}==\"0dd8\", SYSFS{idProduct}==\"5678\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "BUS==\"usb\", SYSFS{idVendor}==\"0424\", SYSFS{idProduct}==\"2512\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "BUS==\"usb\", SYSFS{idVendor}==\"0424\", SYSFS{idProduct}==\"2514\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "BUS==\"usb\", SYSFS{idVendor}==\"0204\", SYSFS{idProduct}==\"6025\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "BUS==\"usb\", SYSFS{idVendor}==\"090c\", SYSFS{idProduct}==\"1000\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "BUS==\"usb\", SYSFS{idVendor}==\"090c\", SYSFS{idProduct}==\"2000\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "BUS==\"usb\", SYSFS{idVendor}==\"1e3d\", SYSFS{idProduct}==\"2093\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "BUS==\"usb\", SYSFS{idVendor}==\"05e3\", SYSFS{idProduct}==\"0608\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+    else
+        echo "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"096e\", MODE=\"0666\", RUN+=\"/usr/sbin/lsusb -v\", RUN+=\"/usr/bin/lsusb -v\"" >> /etc/udev/rules.d/ft.rules
+        echo "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"0dd8\", ATTR{idProduct}==\"5678\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"0424\", ATTR{idProduct}==\"2512\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"0424\", ATTR{idProduct}==\"2514\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"0204\", ATTR{idProduct}==\"6025\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"090c\", ATTR{idProduct}==\"1000\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"090c\", ATTR{idProduct}==\"2000\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"1e3d\", ATTR{idProduct}==\"2093\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"05e3\", ATTR{idProduct}==\"0608\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "SUBSYSTEM==\"usb_device\", ATTRS{idVendor}==\"096e\", MODE=\"0666\", RUN+=\"/usr/sbin/lsusb -v\", RUN+=\"/usr/bin/lsusb -v\"" >> /etc/udev/rules.d/ft.rules
+        echo "SUBSYSTEM==\"usb_device\", ATTRS{idVendor}==\"0dd8\", ATTRS{idProduct}==\"5678\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "SUBSYSTEM==\"usb_device\", ATTRS{idVendor}==\"0424\", ATTRS{idProduct}==\"2512\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "SUBSYSTEM==\"usb_device\", ATTRS{idVendor}==\"0424\", ATTRS{idProduct}==\"2514\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "SUBSYSTEM==\"usb_device\", ATTRS{idVendor}==\"0204\", ATTRS{idProduct}==\"6025\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "SUBSYSTEM==\"usb_device\", ATTRS{idVendor}==\"090c\", ATTRS{idProduct}==\"1000\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "SUBSYSTEM==\"usb_device\", ATTRS{idVendor}==\"090c\", ATTRS{idProduct}==\"2000\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "SUBSYSTEM==\"usb_device\", ATTRS{idVendor}==\"1e3d\", ATTRS{idProduct}==\"2093\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+        echo "SUBSYSTEM==\"usb_device\", ATTRS{idVendor}==\"05e3\", ATTRS{idProduct}==\"0608\", MODE=\"0666\"" >> /etc/udev/rules.d/ft.rules
+    fi
+else
+    echo
+    echo Error! Please install udev tools.
+    echo
+    exit -1
+fi
+
+echo "Install finished successfully! (if you have a dongle attached please remove it and attach it again)"
+exit 0
