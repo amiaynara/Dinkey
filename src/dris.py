@@ -106,7 +106,9 @@ try:
 			library = ctypes.windll.LoadLibrary(os.path.join(this_dir, "dpwin32.dll"))
 	elif 'linux' in sys.platform:
 		if sys.maxsize > 2**32:
-			library = ctypes.cdll.LoadLibrary(os.path.join(this_dir, "dplin64_protected.so"))
+			#library = ctypes.cdll.LoadLibrary(os.path.join(this_dir, "dplin64_net_protected.so"))
+			library = ctypes.cdll.LoadLibrary(os.path.join(this_dir, "dplin64_plus_protected.so"))
+			#library = ctypes.cdll.LoadLibrary(os.path.join(this_dir, "dplin64_lite_protected.so"))
 		else:
 			library = ctypes.cdll.LoadLibrary(os.path.join(this_dir, "dplin32.so"))
 	elif sys.platform == 'darwin':
