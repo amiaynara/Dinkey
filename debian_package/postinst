@@ -35,5 +35,5 @@ if [ $EXIT_STATUS -ne 0 ]; then
     exit 1  # Exit with status 1 to indicate failure
 fi
 
-
+# make multiple copies and then try to access the using each
 echo "Installation complete"
