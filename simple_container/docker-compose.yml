@@ -6,6 +6,7 @@ services:
       - .:/app
       - /tmp:/tmp
       - /dev/bus/usb:/dev/bus/usb
+      - /opt/Microcosm:/opt/Microcosm
     device_cgroup_rules:
       - 'c 189:* rmw'
     cap_add:
