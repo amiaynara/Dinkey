@@ -11,3 +11,13 @@ OUTPUT_FILE=${INPUT_FILE_NAME}_Protected.so
 # Now place the output file in the code
 MODULE_LOCATION="path/to/the/modules/dinkey"
 cp $OUTPUT_FILE $MODULE_LOCATION/$OUTPUT_FILE
+
+
+# trigger a testing suit (CI/CD pipeline) to test the whole thing
+# update works or not (action: program dongle: false)
+# trigger ec2-instance
+# install software there
+# run tests
+# if all 5 tests pass
+# the upload the package to a drive
+# create a release by using proper naming convention for the debian package

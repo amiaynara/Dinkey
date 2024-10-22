@@ -1,11 +1,10 @@
-version: '3.8'
 
 services:
   django-app:
     build: .
     container_name: protected-app
     volumes:
-      - .:/app
+      # - .:/app
       - /tmp:/tmp
       - /dev/bus/usb:/dev/bus/usb
     device_cgroup_rules:
