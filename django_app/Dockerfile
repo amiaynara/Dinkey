@@ -12,14 +12,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Create directories before using them
-RUN mkdir -p /app/dist /app/temp
+
 # Copy the requirements file to the container
 # COPY requirements.txt /app/
 
-COPY . /app/temp
+COPY . /app/
 
 # Install the required Python dependencies
-RUN pip install --no-cache-dir -r /app/temp/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Copy the entire project (code) to the temp folder
 
